@@ -2,6 +2,16 @@
 AddHandler cgi-script .cgi
 Options +FollowSymLinks +ExecCGI
 
+
+# Add this for ompiting a subdirectory
+# RewriteCond %{REQUEST_URI} ^/notsinatra.*
+# RewriteRule .* - [L]
+
+# If you are using sinatra as the main app add this for add-on domains or subdomains
+# RewriteCond %{HTTP_HOST} ^addondomain.org$ [OR]
+# RewriteCond %{HTTP_HOST} ^www.addondomain.org$
+# RewriteRule .* - [L]
+
 RewriteEngine On
 
 RewriteRule ^$ index.html [QSA]

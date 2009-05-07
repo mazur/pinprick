@@ -19,8 +19,10 @@ builder = Rack::Builder.new do
   use Rack::ShowExceptions
 
   map '/' do
-    run App.new
+    run Sinatra::Application
   end
 end
 
 Rack::Handler::FastCGI.run(builder)
+
+
