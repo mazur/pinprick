@@ -2,17 +2,18 @@
 AddHandler cgi-script .cgi
 Options +FollowSymLinks +ExecCGI
 
+RewriteEngine On
 
 # Add this for ompiting a subdirectory
 # RewriteCond %{REQUEST_URI} ^/notsinatra.*
 # RewriteRule .* - [L]
 
-# If you are using sinatra as the main app add this for add-on domains or subdomains
+# If you are using sinatra as the main app and have add on domains 
+# you need to add this for each add-on domain or subdomain. Otherwise
+# sinatra will hijack those calls.
 # RewriteCond %{HTTP_HOST} ^addondomain.org$ [OR]
 # RewriteCond %{HTTP_HOST} ^www.addondomain.org$
 # RewriteRule .* - [L]
-
-RewriteEngine On
 
 RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
